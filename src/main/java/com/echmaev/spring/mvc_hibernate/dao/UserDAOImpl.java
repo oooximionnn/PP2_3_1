@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
+import javax.persistence.Query;
 import java.util.List;
 @Repository
 public class UserDAOImpl implements UserDAO{
@@ -34,5 +35,14 @@ public class UserDAOImpl implements UserDAO{
         Session session = sessionFactory.getCurrentSession();
         User user = session.get(User.class, id);
         return user;
+    }
+
+    @Override
+    public void deleteUser(int id) {
+        Session session = sessionFactory.getCurrentSession();
+        Query query = session.createQuery("delete from User where id =:userId");
+        query.setParameter("userId", id);
+        query.executeUpdate();
+
     }
 }

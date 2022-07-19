@@ -45,10 +45,9 @@ public class MyController {
         return "user-info";
     }
     @RequestMapping("/deleteUser")
-    public String deleteUser(@RequestParam("userId") int id, Model model) {
-        User user = userService.getUser(id);
-        model.addAttribute("user", user);
-        return "user-info";
+    public String deleteUser(@RequestParam("userId") int id) {
+        userService.deleteUser(id);
+        return "redirect:/";
     }
 
 }

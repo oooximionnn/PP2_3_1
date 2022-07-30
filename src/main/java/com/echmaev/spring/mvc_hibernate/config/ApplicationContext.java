@@ -27,11 +27,5 @@ public class ApplicationContext extends AbstractAnnotationConfigDispatcherServle
         return new String[]{"/"};
     }
 
-    protected javax.servlet.Filter[] getServletFilters() {
-        CharacterEncodingFilter characterEncodingFilter = new CharacterEncodingFilter();
-        characterEncodingFilter.setEncoding("UTF-8");
-        characterEncodingFilter.setForceEncoding(true);
-        return (javax.servlet.Filter[]) new Filter[] {(Filter) characterEncodingFilter};
-    }
 
 }
